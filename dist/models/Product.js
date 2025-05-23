@@ -1,8 +1,5 @@
-"use strict";
 // src/models/Product.ts
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Product = void 0;
-class Product {
+export class Product {
     constructor(id, name, price) {
         this.id = id;
         this.name = name;
@@ -16,4 +13,3 @@ class Product {
         return `${this.name} (ID: ${this.id}) - $${this.price.toFixed(2)}`;
     }
 }
-exports.Product = Product;

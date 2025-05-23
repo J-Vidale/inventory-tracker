@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.DigitalProduct = void 0;
-const Product_1 = require("./Product");
-class DigitalProduct extends Product_1.Product {
+import { Product } from './Product';
+export class DigitalProduct extends Product {
     constructor(sku, name, price, fileSize // in megabytes
     ) {
         super(sku, name, price);
@@ -18,4 +15,3 @@ class DigitalProduct extends Product_1.Product {
         return `${super.displayDetails()} | File Size: ${this.formattedFileSize}`;
     }
 }
-exports.DigitalProduct = DigitalProduct;
