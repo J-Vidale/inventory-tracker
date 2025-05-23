@@ -1,9 +1,10 @@
+import { Product } from './models/Product';
 import { PhysicalProduct } from './models/PhysicalProduct';
 import { DigitalProduct } from './models/DigitalProduct';
 import { calculateTax } from './utils/taxCalculator';
 import { sortByName, sortByPrice } from './utils/sortProducts';
 
-const inventory = [
+const inventory: Product[] = [
   new PhysicalProduct('P001', 'Laptop', 1500, 2.5),
   new DigitalProduct('D001', 'E-Book', 30, 15),
   new PhysicalProduct('P002', 'T-Shirt', 25, 0.3),
@@ -17,16 +18,22 @@ for (const product of inventory) {
   }
 }
 
-// Sort by name
+// Function to display product with tax info
+function displayProductWithTax(product: Product) {
+  const tax = calculateTax(product);
+  console.log(`${product.displayDetails()} | Tax: $${tax.toFixed(2)}`);
+}
+
+// Sort by name and display with tax
 console.log('\n--- Sorted by Name ---');
 const nameSorted = sortByName(inventory);
 for (const product of nameSorted) {
-  console.log(product.displayDetails());
+  displayProductWithTax(product);
 }
 
-// Sort by price
+// Sort by price and display with tax
 console.log('\n--- Sorted by Price ---');
 const priceSorted = sortByPrice(inventory);
 for (const product of priceSorted) {
-  console.log(`${product.name}: $${product.price.toFixed(2)}`);
+  displayProductWithTax(product);
 }
