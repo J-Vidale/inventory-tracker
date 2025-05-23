@@ -12,28 +12,24 @@ const inventory: Product[] = [
 ];
 
 // Apply bulk discounts
-for (const product of inventory) {
-  if (product instanceof PhysicalProduct) {
-    product.applyBulkDiscount(2.0, 5);
+for (const prod of inventory) {
+  if (prod instanceof PhysicalProduct) {
+    prod.applyBulkDiscount(2.0, 5);
   }
 }
 
-// Function to display product with tax info
+// Display with tax
 function displayProductWithTax(product: Product) {
   const tax = calculateTax(product);
   console.log(`${product.displayDetails()} | Tax: $${tax.toFixed(2)}`);
 }
 
-// Sort by name and display with tax
 console.log('\n--- Sorted by Name ---');
-const nameSorted = sortByName(inventory);
-for (const product of nameSorted) {
+for (const product of sortByName(inventory)) {
   displayProductWithTax(product);
 }
 
-// Sort by price and display with tax
 console.log('\n--- Sorted by Price ---');
-const priceSorted = sortByPrice(inventory);
-for (const product of priceSorted) {
+for (const product of sortByPrice(inventory)) {
   displayProductWithTax(product);
 }
