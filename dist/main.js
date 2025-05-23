@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const PhysicalProduct_1 = require("./models/PhysicalProduct");
 const DigitalProduct_1 = require("./models/DigitalProduct");
+const taxCalculator_1 = require("./utils/taxCalculator");
 const sortProducts_1 = require("./utils/sortProducts");
 const inventory = [
     new PhysicalProduct_1.PhysicalProduct('P001', 'Laptop', 1500, 2.5),
@@ -15,15 +16,20 @@ for (const product of inventory) {
         product.applyBulkDiscount(2.0, 5);
     }
 }
-// Sort by name
+// Function to display product with tax info
+function displayProductWithTax(product) {
+    const tax = (0, taxCalculator_1.calculateTax)(product);
+    console.log(`${product.displayDetails()} | Tax: $${tax.toFixed(2)}`);
+}
+// Sort by name and display with tax
 console.log('\n--- Sorted by Name ---');
 const nameSorted = (0, sortProducts_1.sortByName)(inventory);
 for (const product of nameSorted) {
-    console.log(product.displayDetails());
+    displayProductWithTax(product);
 }
-// Sort by price
+// Sort by price and display with tax
 console.log('\n--- Sorted by Price ---');
 const priceSorted = (0, sortProducts_1.sortByPrice)(inventory);
 for (const product of priceSorted) {
-    console.log(`${product.name}: $${product.price.toFixed(2)}`);
+    displayProductWithTax(product);
 }
