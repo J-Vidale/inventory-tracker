@@ -1,14 +1,19 @@
 "use strict";
+// src/models/Product.ts
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
 class Product {
-    constructor(sku, name, price) {
-        this.sku = sku;
+    constructor(id, name, price) {
+        this.id = id;
         this.name = name;
         this.price = price;
     }
+    /**
+     * Returns the basic details of the product.
+     * Subclasses can override and call super.displayDetails().
+     */
     displayDetails() {
-        return `${this.name} (SKU: ${this.sku}) - $${this.price.toFixed(2)}`;
+        return `${this.name} (ID: ${this.id}) - $${this.price.toFixed(2)}`;
     }
 }
 exports.Product = Product;

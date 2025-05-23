@@ -11,25 +11,21 @@ const inventory = [
     new DigitalProduct_1.DigitalProduct('D002', 'Software License', 200, 0.1),
 ];
 // Apply bulk discounts
-for (const product of inventory) {
-    if (product instanceof PhysicalProduct_1.PhysicalProduct) {
-        product.applyBulkDiscount(2.0, 5);
+for (const prod of inventory) {
+    if (prod instanceof PhysicalProduct_1.PhysicalProduct) {
+        prod.applyBulkDiscount(2.0, 5);
     }
 }
-// Function to display product with tax info
+// Display with tax
 function displayProductWithTax(product) {
     const tax = (0, taxCalculator_1.calculateTax)(product);
     console.log(`${product.displayDetails()} | Tax: $${tax.toFixed(2)}`);
 }
-// Sort by name and display with tax
 console.log('\n--- Sorted by Name ---');
-const nameSorted = (0, sortProducts_1.sortByName)(inventory);
-for (const product of nameSorted) {
+for (const product of (0, sortProducts_1.sortByName)(inventory)) {
     displayProductWithTax(product);
 }
-// Sort by price and display with tax
 console.log('\n--- Sorted by Price ---');
-const priceSorted = (0, sortProducts_1.sortByPrice)(inventory);
-for (const product of priceSorted) {
+for (const product of (0, sortProducts_1.sortByPrice)(inventory)) {
     displayProductWithTax(product);
 }

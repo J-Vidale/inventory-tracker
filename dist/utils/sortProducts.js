@@ -2,15 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sortByName = sortByName;
 exports.sortByPrice = sortByPrice;
-function sortByName(products, ascending = true) {
-    return products.slice().sort((a, b) => {
-        return ascending
-            ? a.name.localeCompare(b.name)
-            : b.name.localeCompare(a.name);
-    });
+/**
+ * Sorts an array of Products by their name (alphabetical order).
+ * Returns a new sorted array without mutating the original.
+ */
+function sortByName(items) {
+    return items.slice().sort((a, b) => a.name.localeCompare(b.name));
 }
-function sortByPrice(products, ascending = true) {
-    return products.slice().sort((a, b) => {
-        return ascending ? a.price - b.price : b.price - a.price;
-    });
+/**
+ * Sorts an array of Products by their price (ascending order).
+ * Returns a new sorted array without mutating the original.
+ */
+function sortByPrice(items) {
+    return items.slice().sort((a, b) => a.price - b.price);
 }
